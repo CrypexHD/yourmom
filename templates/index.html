@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>EOS Forbes List</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Forbes List</a>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>New Drops</h4>
+            <ul class="list-group">
+                {% for info in data%}
+                <li class="list-group-item">
+                    <a>{{info['username']}} </a> <br>
+                    {% for i,x in loot[data.index(info)].items() %}
+                    {{ i.split(']')[0] + ']' }} - {{ x }} gp<br>
+                    {{ i.split('[')[1].split(']')[0].replace(' ', '_') }}
+                    <a>From: {{info['mob']}}</a>   <br>
+                    {% endfor %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Leaderboard</h4>
+            <ul class="list-group">
+                {% for user in leaderboard %}
+                <li class="list-group-item">
+                    {{ user.username }}: {{ user.total_field }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
